@@ -71,10 +71,10 @@ So:
     <header>
     <a id="main-content"></a>
       <h1>
-        <span class="artist">{{ artwork.all_artists|capfirst }}</span>
+        <span class="artist">William Blake</span>
         <span class="title-row">
-          <span class="title">{{ artwork.title }}</span>
-          <span class="datetext">{{ artwork.dateText }}</span>
+          <span class="title">The Red Dragon</span>
+          <span class="datetext">Ye olden days</span>
         </span>
       </h1>
     </header>
