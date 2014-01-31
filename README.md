@@ -5,6 +5,26 @@ HTML Deconstructor
 
 A simple script to create a deconstructed version of some HTML to make working out the structure a little easier.
 
+## Installation
+
+Just need a stock python 2.x install.
+
+## Usage
+
+### HTML from a file:
+
+    python htmldecon.py test.html
+
+### HTML from stdin
+
+    cat test.html | python htmldecon.py
+
+Or run it without any arguments, paste in the HTML to the terminal window, and then hit ctrl-d.
+
+### HTML from a URL
+
+    python htmldecon.py https://github.com/tobyontour/html-deconstruct
+
 ## Cutting down HTML
 ###Style using only semantic HTML selectors.
 
