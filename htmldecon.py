@@ -11,7 +11,8 @@ class StyleTileParser(HTMLParser):
     depth = 0
     indent_width = 2
     output = []
-    tags_to_ignore = ['meta','style','strong','em','b','i']
+    tags_to_ignore = ['meta','style','strong','em','b','i','br']
+    self_closing_tags = ["area", "base", "basefont", "br", "col", "frame", "hr", "img", "input", "link", "meta", "param"]
 
     def __init__(self):
         HTMLParser.__init__(self)
@@ -40,7 +41,8 @@ class StyleTileParser(HTMLParser):
         output = self.tag_parser(tag,attrs) 
         if output:
             self.output.append(output)
-            self.depth += 1
+            if tag not in self.self_closing_tags:
+                self.depth += 1
 
     def handle_startendtag(self, tag, attrs):
 
