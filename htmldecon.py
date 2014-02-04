@@ -31,8 +31,8 @@ class StyleTileParser(HTMLParser):
             classes = attrs['class'].split()
             output += "." + ".".join(classes)
     
-        if tag == 'div' and len(attrs) == 0:
-            output += "    <<-- Div with no attributes"
+        #if tag == 'div' and len(attrs) == 0:
+        #    output += "    <<-- Div with no attributes"
 
         return output
  
@@ -67,16 +67,21 @@ class StyleTileParser(HTMLParser):
     def handle_charref(self, name):
         pass
 
-f = sys.stdin
-for arg in sys.argv[1:]:
-    print "Using html from %s" % arg
-    if arg.startswith("http"):
-        f = urllib2.urlopen(arg)
-    else:
-        f = open(arg, 'r')
-    break
+if len(sys.argv) == 1:
+    f = sys.stdin
+    html = f.read()
+else:
+    for arg in sys.argv[1:]:
+        print "Using html from %s" % arg
+        if arg.startswith("http"):
+            f = urllib2.urlopen(arg)
+            encoding = f.headers.getparam('charset')
+            html = f.read().decode(encoding)
+        else:
+            f = open(arg, 'r')
+            html = f.read()
+        break
 
-html = f.read()
 f.close()
 parser = StyleTileParser()
 parser.feed(html)
